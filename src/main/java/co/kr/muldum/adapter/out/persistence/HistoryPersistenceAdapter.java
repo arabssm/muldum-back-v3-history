@@ -5,6 +5,7 @@ import co.kr.muldum.domain.model.History;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -26,5 +27,11 @@ public class HistoryPersistenceAdapter implements LoadHistoryPort {
     @Override
     public Integer findMaxGeneration() {
         return historyJpaRepository.findMaxGeneration().orElse(null);
+    }
+
+    @Override
+    public Optional<History> findById(Long id) {
+        return historyJpaRepository.findById(id)
+                .map(HistoryMapper::toDomain);
     }
 }

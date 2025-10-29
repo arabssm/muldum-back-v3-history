@@ -14,10 +14,12 @@ public class History {
     private final ClubType clubType;
     private final String description;
     private final String logoUrl;
+    private final String slogan;
     private final List<Award> awards;
+    private final Detail detail;
 
     public static History of(Long id, String name, Integer generation, ClubType clubType,
-                              String description, String logoUrl, List<Award> awards) {
-        return new History(id, name, generation, clubType, description, logoUrl, awards);
+                              String description, String logoUrl, String slogan, List<Award> awards, Detail detail) {
+        return new History(id, name, generation, clubType, description, logoUrl, slogan, awards, detail);
     }
 }

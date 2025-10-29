@@ -36,16 +36,23 @@ public class HistoryJpaEntity {
     @Column(name = "logo_url")
     private String logoUrl;
 
+    @Column(columnDefinition = "TEXT")
+    private String slogan;
+
     @OneToMany(mappedBy = "history", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<AwardJpaEntity> awards = new ArrayList<>();
 
+    @OneToOne(mappedBy = "history", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private DetailJpaEntity detail;
+
     public HistoryJpaEntity(Long id, String name, Integer generation, ClubType clubType,
-                             String description, String logoUrl) {
+                             String description, String logoUrl, String slogan) {
         this.id = id;
         this.name = name;
         this.generation = generation;
         this.clubType = clubType;
         this.description = description;
         this.logoUrl = logoUrl;
+        this.slogan = slogan;
     }
 }

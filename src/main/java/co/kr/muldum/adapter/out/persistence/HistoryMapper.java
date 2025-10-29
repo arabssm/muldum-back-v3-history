@@ -1,6 +1,8 @@
 package co.kr.muldum.adapter.out.persistence;
 
 import co.kr.muldum.domain.model.Award;
+import co.kr.muldum.domain.model.Contributor;
+import co.kr.muldum.domain.model.Detail;
 import co.kr.muldum.domain.model.History;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,8 @@ public class HistoryMapper {
                 .map(HistoryMapper::awardToDomain)
                 .collect(Collectors.toList());
 
+        Detail detail = entity.getDetail() != null ? detailToDomain(entity.getDetail()) : null;
+
         return History.of(
                 entity.getId(),
                 entity.getName(),
@@ -23,7 +27,9 @@ public class HistoryMapper {
                 entity.getClubType(),
                 entity.getDescription(),
                 entity.getLogoUrl(),
-                awards
+                entity.getSlogan(),
+                awards,
+                detail
         );
     }
 
@@ -32,6 +38,28 @@ public class HistoryMapper {
                 entity.getAwardId(),
                 entity.getAwardType(),
                 entity.getGivenAt()
+        );
+    }
+
+    private static Detail detailToDomain(DetailJpaEntity entity) {
+        List<Contributor> contributors = entity.getContributors().stream()
+                .map(HistoryMapper::contributorToDomain)
+                .collect(Collectors.toList());
+
+        return Detail.of(
+                entity.getDetailId(),
+                entity.getBackground(),
+                entity.getFeatures(),
+                entity.getResearch(),
+                contributors
+        );
+    }
+
+    private static Contributor contributorToDomain(ContributorJpaEntity entity) {
+        return Contributor.of(
+                entity.getContributorId(),
+                entity.getName(),
+                entity.getGithubUrl()
         );
     }
 }
