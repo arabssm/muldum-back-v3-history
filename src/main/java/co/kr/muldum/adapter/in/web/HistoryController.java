@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Tag(name = "Histories", description = "전공동아리 역사 관리 API")
 @RestController
-@RequestMapping("/ara/history")
+@RequestMapping("/history")
 public class HistoryController {
 
     private final GetHistoryUseCase getHistoryUseCase;
