@@ -1,5 +1,6 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.repository;
 
+import co.kr.muldum.adapter.out.persistence.entity.HistoryLogJpaEntity;
 import co.kr.muldum.domain.model.LogType;
 import org.springframework.data.jpa.repository.JpaRepository;
 

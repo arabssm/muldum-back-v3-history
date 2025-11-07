@@ -1,4 +1,4 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.entity;
 
 import co.kr.muldum.domain.model.Role;
 import jakarta.persistence.Column;

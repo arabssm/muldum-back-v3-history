@@ -1,5 +1,8 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.mapper;
 
+import co.kr.muldum.adapter.out.persistence.entity.StudentJpaEntity;
+import co.kr.muldum.adapter.out.persistence.entity.TeacherJpaEntity;
+import co.kr.muldum.adapter.out.persistence.entity.UserJpaEntity;
 import co.kr.muldum.domain.model.Student;
 import co.kr.muldum.domain.model.Teacher;
 import co.kr.muldum.domain.model.User;
