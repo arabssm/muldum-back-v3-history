@@ -1,5 +1,6 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.repository;
 
+import co.kr.muldum.adapter.out.persistence.entity.UserJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
