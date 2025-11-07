@@ -1,5 +1,6 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.repository;
 
+import co.kr.muldum.adapter.out.persistence.mapper.UserMapper;
 import co.kr.muldum.application.port.out.LoadUserPort;
 import co.kr.muldum.domain.model.User;
 import org.springframework.stereotype.Component;

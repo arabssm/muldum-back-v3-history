@@ -1,5 +1,6 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.repository;
 
+import co.kr.muldum.adapter.out.persistence.mapper.HistoryLogMapper;
 import co.kr.muldum.application.port.out.LoadHistoryLogPort;
 import co.kr.muldum.domain.model.HistoryLog;
 import co.kr.muldum.domain.model.LogType;
