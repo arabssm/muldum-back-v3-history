@@ -1,4 +1,4 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
