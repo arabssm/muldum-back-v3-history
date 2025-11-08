@@ -12,7 +12,6 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class HistoryMapper {
@@ -20,7 +19,7 @@ public class HistoryMapper {
     public static History toDomain(HistoryJpaEntity entity) {
         List<Award> awards = entity.getAwards().stream()
                 .map(HistoryMapper::awardToDomain)
-                .collect(Collectors.toList());
+                .toList();
 
         Detail detail = entity.getDetail() != null ? detailToDomain(entity.getDetail()) : null;
 
@@ -48,7 +47,7 @@ public class HistoryMapper {
     private static Detail detailToDomain(DetailJpaEntity entity) {
         List<Contributor> contributors = entity.getContributors().stream()
                 .map(HistoryMapper::contributorToDomain)
-                .collect(Collectors.toList());
+                .toList();
 
         return Detail.of(
                 entity.getDetailId(),
