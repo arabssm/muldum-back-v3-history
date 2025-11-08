@@ -1,5 +1,6 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.repository;
 
+import co.kr.muldum.adapter.out.persistence.mapper.HistoryMapper;
 import co.kr.muldum.application.port.out.LoadHistoryPort;
 import co.kr.muldum.domain.model.History;
 import org.springframework.stereotype.Component;

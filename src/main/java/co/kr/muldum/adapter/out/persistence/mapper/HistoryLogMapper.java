@@ -1,5 +1,6 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.mapper;
 
+import co.kr.muldum.adapter.out.persistence.entity.HistoryLogJpaEntity;
 import co.kr.muldum.domain.model.HistoryLog;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

@@ -1,5 +1,9 @@
-package co.kr.muldum.adapter.out.persistence;
+package co.kr.muldum.adapter.out.persistence.mapper;
 
+import co.kr.muldum.adapter.out.persistence.entity.AwardJpaEntity;
+import co.kr.muldum.adapter.out.persistence.entity.ContributorJpaEntity;
+import co.kr.muldum.adapter.out.persistence.entity.DetailJpaEntity;
+import co.kr.muldum.adapter.out.persistence.entity.HistoryJpaEntity;
 import co.kr.muldum.domain.model.Award;
 import co.kr.muldum.domain.model.Contributor;
 import co.kr.muldum.domain.model.Detail;
