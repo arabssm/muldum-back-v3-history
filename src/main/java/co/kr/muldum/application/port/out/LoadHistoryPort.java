@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface LoadHistoryPort {
     List<History> findByGeneration(Integer generation);
 
-    Integer findMaxGeneration();
+    Optional<Integer> findMaxGeneration();
 
     Optional<History> findById(Long id);
 }

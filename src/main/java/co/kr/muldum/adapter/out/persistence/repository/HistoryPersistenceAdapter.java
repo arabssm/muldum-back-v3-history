@@ -25,8 +25,8 @@ public class HistoryPersistenceAdapter implements LoadHistoryPort {
     }
 
     @Override
-    public Integer findMaxGeneration() {
-        return historyJpaRepository.findMaxGeneration().orElse(null);
+    public Optional<Integer> findMaxGeneration() {
+        return historyJpaRepository.findMaxGeneration();
     }
 
     @Override

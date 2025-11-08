@@ -37,12 +37,11 @@ public class HistoryQueryService implements GetHistoryUseCase {
         }
 
         // generation이 제공되지 않은 경우 - 최신 세대 조회
-        Integer maxGeneration = loadHistoryPort.findMaxGeneration();
-        if (maxGeneration == null) {
-            return HistoryListResponse.from(List.of());
-        }
-
-        List<History> historyList = loadHistoryPort.findByGeneration(maxGeneration);
-        return HistoryListResponse.from(historyList);
+        return loadHistoryPort.findMaxGeneration()
+                .map(maxGeneration -> {
+                    List<History> historyList = loadHistoryPort.findByGeneration(maxGeneration);
+                    return HistoryListResponse.from(historyList);
+                })
+                .orElseGet(() -> HistoryListResponse.from(List.of()));
     }
 }
