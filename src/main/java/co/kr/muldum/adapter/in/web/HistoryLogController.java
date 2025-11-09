@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Tag(name = "Super Admin - History Logs", description = "Super Admin용 역대 전공동아리 로그 조회 API")
 @RestController
-@RequestMapping("/history/logs")
+@RequestMapping("/sup/history/logs")
 public class HistoryLogController {
 
     private final GetHistoryLogUseCase getHistoryLogUseCase;
