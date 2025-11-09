@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Tag(name = "Histories", description = "전공동아리 역사 관리 API")
 @RestController
-@RequestMapping("/history")
+@RequestMapping("/ara/history")
 public class HistoryController {
 
     private final GetHistoryUseCase getHistoryUseCase;
@@ -64,7 +64,7 @@ public class HistoryController {
             @ApiResponse(responseCode = "500", description = "서버 내부 오류",
                     content = @Content)
     })
-    @GetMapping("/{id}")
+    @GetMapping("/{team-id}")
     public ResponseEntity<HistoryDetailResponse> getHistoryDetail(
             @Parameter(description = "전공동아리 ID")
             @PathVariable Long id) {
