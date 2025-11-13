@@ -1,58 +1,74 @@
 package co.kr.muldum.adapter.out.persistence.entity;
 
-import co.kr.muldum.domain.model.ClubType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "history")
+@Table(name = "histories")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class HistoryJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "history_id")
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String name;
 
     @Column(nullable = false)
     private Integer generation;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "club_type", nullable = false)
-    private ClubType clubType;
-
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "logo_url")
+    @Column(name = "logo_url", columnDefinition = "TEXT")
     private String logoUrl;
 
     @Column(columnDefinition = "TEXT")
     private String slogan;
 
-    @OneToMany(mappedBy = "history", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<AwardJpaEntity> awards = new ArrayList<>();
+    @Column(name = "detail_background", columnDefinition = "TEXT")
+    private String detailBackground;
 
-    @OneToOne(mappedBy = "history", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private DetailJpaEntity detail;
+    @Column(name = "detail_features", columnDefinition = "TEXT")
+    private String detailFeatures;
 
-    public HistoryJpaEntity(Long id, String name, Integer generation, ClubType clubType,
-                             String description, String logoUrl, String slogan) {
-        this.id = id;
+    @Column(name = "detail_research", columnDefinition = "TEXT")
+    private String detailResearch;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false, columnDefinition = "TIMESTAMPTZ")
+    private OffsetDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at", columnDefinition = "TIMESTAMPTZ")
+    private OffsetDateTime updatedAt;
+
+    @OneToMany(mappedBy = "history", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<HistoryAwardJpaEntity> awards = new ArrayList<>();
+
+    @OneToMany(mappedBy = "history", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<HistoryContributorJpaEntity> contributors = new ArrayList<>();
+
+    public HistoryJpaEntity(String name, Integer generation, String description,
+                           String logoUrl, String slogan, String detailBackground,
+                           String detailFeatures, String detailResearch) {
         this.name = name;
         this.generation = generation;
-        this.clubType = clubType;
         this.description = description;
         this.logoUrl = logoUrl;
         this.slogan = slogan;
+        this.detailBackground = detailBackground;
+        this.detailFeatures = detailFeatures;
+        this.detailResearch = detailResearch;
     }
 }
